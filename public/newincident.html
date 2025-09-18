@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="utf-8" />
+    <title>New Incident</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <script src="js/eventhandler.js" defer></script>
+</head>
+
+<body>
+    <!-- Sidebar -->
+    <aside id="sidebar">
+        <nav>Dashboard</nav>
+        <nav>Incidents</nav>
+        <nav>Clients</nav>
+        <nav>Users</nav>
+        <nav>Reports</nav>
+    </aside>
+
+    <!-- Main Content -->
+    <div id="main-content">
+        <header id="new-incident-header">
+            <h1 id="portal-heading">Incident Management Portal</h1>
+            <h2>Create a New Incident</h2>
+        </header>
+
+        <main id="new-incident-form-container">
+            <form id="incident-form" method="post" action="/incidents/create">
+                <fieldset class="no-border">
+
+                    <div class="form-group">
+                        <label for="title">Title <span class="required">*</span></label>
+                        <input type="text" id="title" name="title" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="client">Client <span class="required">*</span></label>
+                        <input type="text" id="client" name="client" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="assignedUser">Assigned User <span class="required">*</span></label>
+                        <select id="assignedUser" name="assignedUser" required>
+                            <option value="">-- Select --</option>
+                            <option value="1">Alice Smith</option>
+                            <option value="2">John Doe</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="severity">Severity <span class="required">*</span></label>
+                        <select id="severity" name="severity" required>
+                            <option value="">-- Select --</option>
+                            <option value="low">Low</option>
+                            <option value="medium">Medium</option>
+                            <option value="high">High</option>
+                            <option value="critical">Critical</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="impact">Impact <span class="required">*</span></label>
+                        <select id="impact" name="impact" required>
+                            <option value="">-- Select --</option>
+                            <option value="low">Low</option>
+                            <option value="medium">Medium</option>
+                            <option value="high">High</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="urgency">Urgency <span class="required">*</span></label>
+                        <select id="urgency" name="urgency" required>
+                            <option value="">-- Select --</option>
+                            <option value="low">Low</option>
+                            <option value="medium">Medium</option>
+                            <option value="high">High</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="description">Description <span class="required">*</span></label>
+                        <textarea id="description" name="description" rows="5" required></textarea>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" id="cancel-button">Cancel</button>
+                        <button type="submit" id="create-button">Create Incident</button>
+                    </div>
+
+                </fieldset>
+            </form>
+        </main>
+    </div>
+</body>
+
+</html>
