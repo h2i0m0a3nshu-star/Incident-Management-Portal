@@ -5,8 +5,6 @@
 
 * {
   font-family: Roboto, 'Open Sans', 'Helvetica Neue', sans-serif;
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
 }
 
@@ -25,7 +23,7 @@ h1 {
   margin-bottom: 1rem;
 }
 
-h2, #dashboard-header {
+h2 {
   font-size: 1.5rem;
   font-weight: 600;
   color: #111827;
@@ -89,21 +87,18 @@ a:hover {
 .login-subtitle {
   font-size: 1rem;
   color: #4b5563;
-  margin: 0.5rem 0 1.5rem 0;
-}
-
-form {
-  display: grid;
-  gap: 1rem;
+  margin: 1.5rem 0 0.5rem 0;
 }
 
 .form-group {
   display: flex;
   flex-direction: column;
+  margin: 0.25rem;
 }
 
 .form-group label {
   font-weight: 500;
+  margin: 1rem;
   margin-bottom: 0.5rem;
 }
 
@@ -111,7 +106,7 @@ form input,
 form select,
 form textarea {
   width: 100%;
-  padding: 0.75rem;
+  padding: 1rem;
   border: 1px solid #d1d5db;
   border-radius: 6px;
   font-size: 1rem;
@@ -166,6 +161,9 @@ button,
 #cancel-button:hover {
   background: #e5e7eb;
 }
+#login-form nav{
+  margin: 0.5rem;
+}
 
 /* =====================
    Layout (Sidebar + Main)
@@ -192,7 +190,6 @@ button,
 }
 #sidebar .active {
   background: #2563eb;
-  border-left: 4px solid #1e40af;
   font-weight: 600;
 }
 
