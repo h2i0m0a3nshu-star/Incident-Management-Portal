@@ -25,7 +25,7 @@ h1 {
   margin-bottom: 1rem;
 }
 
-h2 {
+h2, #dashboard-header {
   font-size: 1.5rem;
   font-weight: 600;
   color: #111827;
@@ -219,7 +219,7 @@ header {
 .card-container {
   display: flex;
   gap: 1rem;
-  margin: 2rem 0;
+  margin: 2rem 1rem;
 }
 .card {
   flex: 1;
@@ -239,6 +239,14 @@ header {
   color: #111827;
 }
 
+#overview-section{
+  margin-top: 2rem;
+}
+
+#dashboard-main h2{
+  margin-left: 1rem;
+}
+
 /* =====================
    Tables (Incidents, Clients, etc.)
 ===================== */
@@ -249,7 +257,7 @@ header {
   border-radius: 6px;
   overflow: hidden;
   box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-  margin: 2rem 0;
+  margin: 2rem 0rem;
 }
 .data-table thead {
   background: #f3f4f6;

@@ -17,7 +17,11 @@ Built with **PHP, HTML, CSS, AJAX, and SQL** to demonstrate clean architecture, 
 ## Tech Stack  
 - **Frontend**: HTML, CSS, AJAX (vanilla JS)  
 - **Backend**: PHP  
-- **Database**: MySQL (or MariaDB)  
+- **Database**: MySQL
 - **Version Control**: Git & GitHub  
 
 ---
+
+### AI Collaboration Notice
+
+This project includes aesthetic and design contributions generated in collaboration with Microsoft Copilot and chatGPT an AI assistant. AI was used to assist with layout suggestions, visual styling ideas, and creative brainstorming. All final decisions and implementations were made by the project author.
