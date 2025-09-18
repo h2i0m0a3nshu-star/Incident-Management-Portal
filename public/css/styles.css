@@ -329,3 +329,11 @@ header {
   justify-content: flex-end;
   gap: 1rem;
 }
+
+/* =================
+  (Role based classes)
+====================*/
+
+.admin-role{
+  visibility: hidden;
+}
