@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="utf-8" />
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <script src="js/eventhandler.js" defer></script>
+</head>
+<body>
+    <!-- Sidebar -->
+    <aside id="sidebar">
+        <nav>Dashboard</nav>
+        <nav>Incidents</nav>
+        <nav>Clients</nav>
+        <nav>Users</nav>
+        <nav>Reports</nav>
+    </aside>
+
+    <div id="main-content">
+        <!-- Header -->
+        <header id="dashboard-header">
+            <button id="hamburger">&#9776;</button>
+            <h2>Dashboard</h2>
+            <nav>
+                <a id="new-incident-button" href="#">New Incident</a>
+            </nav>
+        </header>
+
+        <!-- Main Body -->
+        <main id="dashboard-main">
+            <section id="overview-section">
+                <h2>Overview</h2>
+                <div class="card-container">
+                    <div class="card">Open <span class="card-value">12</span></div>
+                    <div class="card">In Progress <span class="card-value">5</span></div>
+                    <div class="card">Resolved <span class="card-value">21</span></div>
+                    <div class="card">Total <span class="card-value">38</span></div>
+                </div>
+            </section>
+
+            <section id="recent-incidents">
+                <h2>Recent Incidents</h2>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Title</th>
+                            <th>Client</th>
+                            <th>Assigned User</th>
+                            <th>Severity</th>
+                            <th>Status</th>
+                            <th>Date Created</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>#1001</td>
+                            <td>Network outage</td>
+                            <td>XYZ Corp</td>
+                            <td>Alice Smith</td>
+                            <td><span class="tag high">High</span></td>
+                            <td><span class="tag open">Open</span></td>
+                            <td>2025-09-17</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section id="recent-clients">
+                <h2>Recent Clients</h2>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Location</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>XYZ Corp</td>
+                            <td>contact@xyz.com</td>
+                            <td>New York</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
