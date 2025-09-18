@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Clients</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <script src="js/eventhandler.js" defer></script>
+</head>
+
+<body>
+    <!-- Sidebar -->
+    <aside id="sidebar">
+        <nav>Dashboard</nav>
+        <nav>Incidents</nav>
+        <nav class="active">Clients</nav>
+        <nav>Users</nav>
+        <nav>Reports</nav>
+    </aside>
+
+    <!-- Main Content -->
+    <div id="main-content">
+        <header id="clients-header">
+            <h1>Clients</h1>
+        </header>
+
+        <main id="clients-list-container">
+            <section>
+                <table class="data-table" id="clients-table">
+                    <thead>
+                        <tr>
+                            <th>
+                                ID
+                                <button class="sort-btn" data-col="0">⇅</button>
+                                <input type="text" class="search-input" placeholder="Search ID">
+                            </th>
+                            <th>
+                                First Name
+                                <button class="sort-btn" data-col="1">⇅</button>
+                                <input type="text" class="search-input" placeholder="Search First">
+                            </th>
+                            <th>
+                                Last Name
+                                <button class="sort-btn" data-col="2">⇅</button>
+                                <input type="text" class="search-input" placeholder="Search Last">
+                            </th>
+                            <th>
+                                Email
+                                <button class="sort-btn" data-col="3">⇅</button>
+                                <input type="text" class="search-input" placeholder="Search Email">
+                            </th>
+                            <th>
+                                Location
+                                <button class="sort-btn" data-col="4">⇅</button>
+                                <input type="text" class="search-input" placeholder="Search Location">
+                            </th>
+                            <th>
+                                Status
+                                <button class="sort-btn" data-col="5">⇅</button>
+                                <input type="text" class="search-input" placeholder="Search Status">
+                            </th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>#2001</td>
+                            <td>Jane</td>
+                            <td>Doe</td>
+                            <td>jane.doe@example.com</td>
+                            <td>Toronto</td>
+                            <td><span class="tag active">Active</span></td>
+                            <td><a href="#">View</a> | <a href="#">Edit</a></td>
+                        </tr>
+                        <tr>
+                            <td>#2002</td>
+                            <td>Bob</td>
+                            <td>Smith</td>
+                            <td>bob.smith@example.com</td>
+                            <td>Vancouver</td>
+                            <td><span class="tag inactive">Inactive</span></td>
+                            <td><a href="#">View</a> | <a href="#">Edit</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </main>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Incidents</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <script src="js/eventhandler.js" defer></script>
+</head>
+
+<body>
+    <!-- Sidebar -->
+    <aside id="sidebar">
+        <nav>Dashboard</nav>
+        <nav class="active">Incidents</nav>
+        <nav>Clients</nav>
+        <nav>Users</nav>
+        <nav>Reports</nav>
+    </aside>
+
+    <!-- Main Content -->
+    <div id="main-content">
+        <header id="incidents-header">
+            <h1>Incidents</h1>
+            <nav>
+                <a id="new-incident-button" href="new-incident.html">+ New Incident</a>
+            </nav>
+        </header>
+
+        <main id="incidents-list-container">
+            <section>
+                <table class="data-table" id="incidents-table">
+                    <thead>
+                        <tr>
+                            <th>
+                                ID
+                                <button class="sort-btn" data-col="0">⇅</button>
+                                <input type="text" class="search-input" placeholder="Search ID">
+                            </th>
+                            <th>
+                                Title
+                                <button class="sort-btn" data-col="1">⇅</button>
+                                <input type="text" class="search-input" placeholder="Search Title">
+                            </th>
+                            <th>
+                                Client
+                                <button class="sort-btn" data-col="2">⇅</button>
+                                <input type="text" class="search-input" placeholder="Search Client">
+                            </th>
+                            <th>
+                                Assigned User
+                                <button class="sort-btn" data-col="3">⇅</button>
+                                <input type="text" class="search-input" placeholder="Search User">
+                            </th>
+                            <th>
+                                Severity
+                                <button class="sort-btn" data-col="4">⇅</button>
+                                <input type="text" class="search-input" placeholder="Search Severity">
+                            </th>
+                            <th>
+                                Status
+                                <button class="sort-btn" data-col="5">⇅</button>
+                                <input type="text" class="search-input" placeholder="Search Status">
+                            </th>
+                            <th>
+                                Date Created
+                                <button class="sort-btn" data-col="6">⇅</button>
+                                <input type="text" class="search-input" placeholder="Search Date">
+                            </th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>#1001</td>
+                            <td>Network outage</td>
+                            <td>XYZ Corp</td>
+                            <td>Alice Smith</td>
+                            <td><span class="tag high">High</span></td>
+                            <td><span class="tag open">Open</span></td>
+                            <td>2025-09-17</td>
+                            <td><a href="#">View</a> | <a href="#">Edit</a></td>
+                        </tr>
+                        <tr>
+                            <td>#1002</td>
+                            <td>Software crash</td>
+                            <td>ABC Ltd</td>
+                            <td>John Doe</td>
+                            <td><span class="tag medium">Medium</span></td>
+                            <td><span class="tag inprogress">In Progress</span></td>
+                            <td>2025-09-16</td>
+                            <td><a href="#">View</a> | <a href="#">Edit</a></td>
+                        </tr>
+                        <tr>
+                            <td>#1003</td>
+                            <td>Security breach</td>
+                            <td>Acme Inc</td>
+                            <td>Mark Lee</td>
+                            <td><span class="tag critical">Critical</span></td>
+                            <td><span class="tag resolved">Resolved</span></td>
+                            <td>2025-09-15</td>
+                            <td><a href="#">View</a> | <a href="#">Edit</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
