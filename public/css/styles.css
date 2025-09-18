@@ -112,3 +112,66 @@ main p:last-child {
 #login-button:hover {
   background: #163aa9;
 }
+
+/* ============ Forgot Password Page ============ */
+
+/* Subtitle under heading */
+.login-subtitle {
+  font-size: 1rem;
+  color: #4b5563; /* neutral gray */
+  margin: 0.5rem 0 1.5rem 0;
+  font-weight: 400;
+}
+
+/* Forgot password form */
+#forgot-form {
+  display: grid;
+  grid-template-rows: auto auto;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+#forgot-form input {
+  width: 20rem;
+  padding: 0.75rem;
+  border: 1px solid #d1d5db;
+  border-radius: 5px;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  transition: 0.2s;
+}
+
+#forgot-form input:focus {
+  border-color: #3568e7;
+  outline: none;
+  box-shadow: 0 0 5px rgba(53,104,231,0.4);
+}
+
+/* Reset button styling (reuse login-button look) */
+#forgot-form button {
+  width: 100%;
+  padding: 0.75rem;
+  background: #3568e7;
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+#forgot-form button:hover {
+  background: #163aa9;
+}
+
+/* Link back to login */
+#forgot-form + p a {
+  color: #3568e7;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+#forgot-form + p a:hover {
+  text-decoration: underline;
+}

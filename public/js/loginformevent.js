@@ -1,5 +1,5 @@
-emailinput = document.getElementById("email");
-emailinput.addEventListener("blur", validateEmail)
+let emailinput = document.getElementById("email");
+emailinput.addEventListener("blur", validateEmail);
 
-passwordinput = document.getElementById("password");
+let passwordinput = document.getElementById("password");
 passwordinput.addEventListener("blur", validatePassword);
