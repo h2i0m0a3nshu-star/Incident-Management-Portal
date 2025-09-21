@@ -1,19 +1,38 @@
-function validateEmail(event){
+function validateEmail(event) {
     let input = event.target;
     let emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
-    if(emailRegex.test(input.value)){
+    if (emailRegex.test(input.value)) {
         console.log("Valid Email");
-        return true;
+        input.classList.remove("invalid-input");
+    } else {
+        input.classList.add("invalid-input");
+        console.log("Invalid Email");
+        event.preventDefault();
     }
-    console.log("Invalid Email");
 }
 
-function validatePassword(event){
+function validatePassword(event) {
     let input = event.target;
     let passwordRegex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[#?!@$%^&*-]).{8,}$/;
-    if(passwordRegex.test(input.value)){
+    if (passwordRegex.test(input.value)) {
         console.log("Valid Password");
-        return true;
+        input.classList.remove("invalid-input");
+    } else {
+        input.classList.add("invalid-input");
+        console.log("Invalid Password");
+        event.preventDefault();
     }
-    console.log("Invalid Password");
+}
+
+function validateEmpty(event){
+    let input = event.target;
+    let emptyRegex = /^$/;
+    if(!emptyRegex.test(input.value)){
+        input.classList.remove("invalid-input");
+        console.log("Valid Password");
+    }else{
+        input.classList.add("invalid-input");
+        console.log("InmValid Password");
+        event.preventDefault();
+    }
 }

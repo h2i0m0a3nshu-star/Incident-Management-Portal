@@ -15,7 +15,7 @@
         <nav>Incidents</nav>
         <nav>Clients</nav>
         <nav>Reports</nav>
-        <nav class="admin-role">Users</nav>
+        <nav>Users</nav>
     </aside>
     
     <!-- Main Content -->
@@ -44,6 +44,16 @@
                             <option value="">-- Select --</option>
                             <option value="1">Alice Smith</option>
                             <option value="2">John Doe</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="status">Status <span class="required">*</span></label>
+                        <select id="status" name="status" required>
+                            <option value="">-- Select --</option>
+                            <option value="low">New</option>
+                            <option value="medium">In-Progress</option>
+                            <option value="high">Resolved</option>
                         </select>
                     </div>
 
@@ -97,6 +107,7 @@
             </form>
         </main>
     </div>
+    <script src="js/newincidentformevent.js" defer></script>
 </body>
 
 </html>
