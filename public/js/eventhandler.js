@@ -13,7 +13,7 @@ function validateEmail(event) {
 
 function validatePassword(event) {
     let input = event.target;
-    let passwordRegex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[#?!@$%^&*-]).{8,}$/;
+    let passwordRegex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*()\-_=+{};:,<.>]).{8,}$/;
     if (passwordRegex.test(input.value)) {
         console.log("Valid Password");
         input.classList.remove("invalid-input");
