@@ -195,6 +195,11 @@ button,
   font-weight: 600;
 }
 
+#sidebar a{
+  text-decoration: none;
+  color: #fff;
+}
+
 #main-content {
   margin-left: 220px;
   flex: 1;

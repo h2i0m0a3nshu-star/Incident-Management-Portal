@@ -36,7 +36,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
       }
     } catch (mysqli_sql_exception $e) {
         $error["Database Connection"] = "Could not connect to the database.";
-        $flag = true;
+        $flag = TRUE;
     }
 
     $query = "SELECT * FROM users WHERE email= ? AND password= ?";
@@ -112,7 +112,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
               <input id="password" name="password" type="password" placeholder="Password" required />
             </div>
             <nav>
-              <a href="forgotpassword.html">
+              <a href="forgotpassword.php">
                 Forgot Password ?
               </a>
             </nav>

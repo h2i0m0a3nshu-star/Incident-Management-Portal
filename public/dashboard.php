@@ -1,19 +1,79 @@
+<?php
+session_start();
+require_once("db.php");
+
+$incidents = array();
+$error = array();
+$flag = FALSE;
+    
+if( !$flag) {
+    try {
+        $conn =new mysqli($db_host, $db_user, $db_pwd, $db_db);
+
+        if ($conn->connect_error) {
+            throw new mysqli_sql_exception($conn->connect_error, $conn->connect_errno);
+        }
+    }
+
+    catch (mysqli_sql_exception $e) {
+        $error["Database Connection"]="Could not connect to the database.";
+        $flag =TRUE;
+    }
+
+    $query ="SELECT 
+        incidents.incidentID, 
+        incidents.title, 
+        CONCAT(clients.firstName, ' ', clients.lastName) AS clientName,
+        CONCAT(users.firstName, ' ', users.lastName) AS assignedUser,
+        incidents.severity, 
+        incidents.status, 
+        incidents.datecreated
+    FROM incidents
+    JOIN users ON users.userID = incidents.userID
+    JOIN clients ON clients.clientID = incidents.clientID
+    ORDER BY incidents.datecreated DESC
+    LIMIT 5
+    ";
+
+    $stmt = $conn->prepare($query);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $incidents = $result->fetch_all(MYSQLI_ASSOC);
+
+
+    if( !$incidents) {
+        $error["Database Error"]="Could not retrieve user information";
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en-US">
+
 <head>
     <meta charset="utf-8" />
     <title>Dashboard</title>
     <link rel="stylesheet" href="css/styles.css" />
     <script src="js/eventhandler.js" defer></script>
 </head>
+
 <body>
     <!-- Sidebar -->
     <aside id="sidebar">
-        <nav class="active">Dashboard</nav>
-        <nav>Incidents</nav>
-        <nav>Clients</nav>
-        <nav>Reports</nav>
-        <nav>Users</nav>
+        <nav class="active">
+            Dashboard
+        </nav>
+        <nav>
+            <a href="incidents.html">Incidents</a>
+        </nav>
+        <nav>
+            <a href="clients.html">Clients</a>
+        </nav>
+        <?php if($_SESSION["role"] == "admin"): ?>
+        <nav>
+            <a href="users.html">Users</a>
+        </nav>
+        <?php endif; ?>
     </aside>
 
     <div id="main-content">
@@ -51,17 +111,45 @@
                             <th>Date Created</th>
                         </tr>
                     </thead>
+                    <?php if(!empty($incidents)): ?>
+                    <tbody>
+
+                        <?php foreach ($incidents as $incident): ?>
+                        <tr>
+                            <td><?php echo "#" . str_pad($incident['incidentID'], 4, "0", STR_PAD_LEFT); ?></td>
+                            <td><?php echo htmlspecialchars($incident['title']); ?></td>
+                            <td><?php echo htmlspecialchars($incident['clientName']); ?></td>
+                            <td><?php echo htmlspecialchars($incident['assignedUser']); ?></td>
+                            <td>
+                                <span class="tag <?php echo strtolower($incident['severity']) ?>">
+                                    <?php echo htmlspecialchars($incident['severity']); ?>
+                                </span>
+                            </td>
+                            <td>
+                                <span class="tag <?php echo strtolower($incident['status']) ?>">
+                                    <?php echo htmlspecialchars($incident['status']); ?>
+                                </span>
+                            </td>
+                            <td><?php echo htmlspecialchars($incident['datecreated']); ?></td>
+                        </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                    <?php else: ?>
                     <tbody>
                         <tr>
-                            <td>#1001</td>
-                            <td>Network outage</td>
-                            <td>XYZ Corp</td>
-                            <td>Alice Smith</td>
-                            <td><span class="tag high">High</span></td>
-                            <td><span class="tag open">Open</span></td>
-                            <td>2025-09-17</td>
+                            <td colspan="7">No incidents found.</td>
                         </tr>
                     </tbody>
+                    <?php endif; ?>
+                    <!-- <tr>
+                        <td>#1001</td>
+                        <td>Network outage</td>
+                        <td>XYZ Corp</td>
+                        <td>Alice Smith</td>
+                        <td><span class="tag high">High</span></td>
+                        <td><span class="tag open">Open</span></td>
+                        <td>2025-09-17</td>
+                    </tr> -->
                 </table>
             </section>
 
@@ -87,4 +175,5 @@
         </main>
     </div>
 </body>
+
 </html>
