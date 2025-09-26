@@ -67,10 +67,10 @@ $conn->close();
     <!-- Sidebar -->
     <aside id="sidebar">
         <nav class="active">Dashboard</nav>
-        <nav><a href="incidents.html">Incidents</a></nav>
-        <nav><a href="clients.html">Clients</a></nav>
+        <nav><a href="incidents.php">Incidents</a></nav>
+        <nav><a href="clients.php">Clients</a></nav>
         <?php if ($_SESSION["role"] == "admin"): ?>
-            <nav><a href="users.html">Users</a></nav>
+            <nav><a href="users.php">Users</a></nav>
         <?php endif; ?>
     </aside>
 
