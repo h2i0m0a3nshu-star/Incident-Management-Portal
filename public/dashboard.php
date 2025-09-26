@@ -3,6 +3,10 @@ session_start();
 require_once("db.php");
 
 $incidents = array();
+$clients = array();
+$openCount = 0;
+$inprogressCount = 0;
+$resolvedCount = 0;
 $error = array();
 $flag = FALSE;
     
@@ -40,10 +44,44 @@ if( !$flag) {
     $result = $stmt->get_result();
     $incidents = $result->fetch_all(MYSQLI_ASSOC);
 
-
     if( !$incidents) {
         $error["Database Error"]="Could not retrieve user information";
     }
+
+    $query = "SELECT
+        COUNT(incidentID) AS 'Open'
+    FROM incidents
+    WHERE status='open'
+    ";
+    $stmt = $conn->prepare($query);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $row = $result->fetch_assoc();
+    $openCount = $row['Open'];
+
+    $query = "SELECT
+        COUNT(incidentID) AS 'In Progress'
+    FROM incidents
+    WHERE status='inprogress'
+    ";
+    $stmt = $conn->prepare($query);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $row = $result->fetch_assoc();
+    $inprogressCount = $row['In Progress'];
+
+    $query = "SELECT
+        COUNT(incidentID) AS 'Resolved'
+    FROM incidents
+    WHERE status='resolved'
+    ";
+    $stmt = $conn->prepare($query);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $row = $result->fetch_assoc();
+    $resolvedCount = $row['Resolved'];
+
+    $conn->close();
 }
 ?>
 
@@ -90,10 +128,18 @@ if( !$flag) {
             <section id="overview-section">
                 <h2>Overview</h2>
                 <div class="card-container">
-                    <div class="card">Open <span class="card-value">12</span></div>
-                    <div class="card">In Progress <span class="card-value">5</span></div>
-                    <div class="card">Resolved <span class="card-value">21</span></div>
-                    <div class="card">Total <span class="card-value">38</span></div>
+                    <div class="card">Open <span class="card-value">
+                        <?php echo $openCount ?>
+                    </span></div>
+                    <div class="card">In Progress <span class="card-value">
+                        <?php echo $inprogressCount ?>
+                    </span></div>
+                    <div class="card">Resolved <span class="card-value">
+                        <?php echo $resolvedCount ?>
+                    </span></div>
+                    <div class="card">Total <span class="card-value">
+                        <?php echo $openCount + $inprogressCount + $resolvedCount ?>
+                    </span></div>
                 </div>
             </section>
 
@@ -141,35 +187,6 @@ if( !$flag) {
                         </tr>
                     </tbody>
                     <?php endif; ?>
-                    <!-- <tr>
-                        <td>#1001</td>
-                        <td>Network outage</td>
-                        <td>XYZ Corp</td>
-                        <td>Alice Smith</td>
-                        <td><span class="tag high">High</span></td>
-                        <td><span class="tag open">Open</span></td>
-                        <td>2025-09-17</td>
-                    </tr> -->
-                </table>
-            </section>
-
-            <section id="recent-clients">
-                <h2>Recent Clients</h2>
-                <table class="data-table">
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Location</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>XYZ Corp</td>
-                            <td>contact@xyz.com</td>
-                            <td>New York</td>
-                        </tr>
-                    </tbody>
                 </table>
             </section>
         </main>
