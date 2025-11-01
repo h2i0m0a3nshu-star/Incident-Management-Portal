@@ -69,9 +69,8 @@ $conn->close();
         <nav class="active">Dashboard</nav>
         <nav><a href="incidents.php">Incidents</a></nav>
         <nav><a href="clients.php">Clients</a></nav>
-        <!-- <?php if ($_SESSION["role"] == "admin"): ?>
-            <nav><a href="users.php">Users</a></nav>
-        <?php endif; ?> -->
+        <nav><a href="users.php">Users</a></nav>
+    
     </aside>
 
     <div id="main-content">

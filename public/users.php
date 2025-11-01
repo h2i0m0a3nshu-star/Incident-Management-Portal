@@ -1,9 +1,33 @@
+<?php
+require_once("db.php");
+$users;
+
+// Database connection
+try {
+    $conn = new mysqli($db_host, $db_user, $db_pwd, $db_db);
+    if ($conn->connect_error) {
+        throw new mysqli_sql_exception($conn->connect_error, $conn->connect_errno);
+    }
+} catch (mysqli_sql_exception $e) {
+    $error["Database Connection"] = "Could not connect to the database.";
+}
+
+$query = "
+    SELECT userID, firstName, lastName, email, status
+    FROM users;
+";
+$stmt = $conn->prepare($query);
+$stmt->execute();
+$result = $stmt->get_result();
+$users = $result->fetch_all(MYSQLI_ASSOC);
+?>
+
 <!DOCTYPE html>
 <html lang="en-US">
 
 <head>
     <meta charset="utf-8" />
-    <title>Clients</title>
+    <title>Users</title>
     <link rel="stylesheet" href="css/styles.css" />
     <script src="js/eventhandler.js" defer></script>
 </head>
@@ -11,17 +35,16 @@
 <body>
    <!-- Sidebar -->
     <aside id="sidebar">
-        <nav>Dashboard</nav>
-        <nav>Incidents</nav>
-        <nav class="active">Clients</nav>
-        <nav>Reports</nav>
-        <nav>Users</nav>
+        <nav><a href="dashboard.php">Dashboard</a></nav>
+        <nav><a href="incidents.php">Incidents</a></nav>
+        <nav><a href="clients.php">Clients</a></nav>
+        <nav class="active"><a href="users.php">Users</a></nav>
     </aside>
 
     <!-- Main Content -->
     <div id="main-content">
         <header id="clients-header">
-            <h1>Clients</h1>
+            <h1>Users</h1>
         </header>
 
         <main id="clients-list-container">
@@ -50,11 +73,6 @@
                                 <input type="text" class="search-input" placeholder="Search Email">
                             </th>
                             <th>
-                                Location
-                                <button class="sort-btn" data-col="4">⇅</button>
-                                <input type="text" class="search-input" placeholder="Search Location">
-                            </th>
-                            <th>
                                 Status
                                 <button class="sort-btn" data-col="5">⇅</button>
                                 <input type="text" class="search-input" placeholder="Search Status">
@@ -63,24 +81,22 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>#2001</td>
-                            <td>Jane</td>
-                            <td>Doe</td>
-                            <td>jane.doe@example.com</td>
-                            <td>Toronto</td>
-                            <td><span class="tag active">Active</span></td>
-                            <td><a href="#">View</a> | <a href="#">Edit</a></td>
-                        </tr>
-                        <tr>
-                            <td>#2002</td>
-                            <td>Bob</td>
-                            <td>Smith</td>
-                            <td>bob.smith@example.com</td>
-                            <td>Vancouver</td>
-                            <td><span class="tag inactive">Inactive</span></td>
-                            <td><a href="#">View</a> | <a href="#">Edit</a></td>
-                        </tr>
+                        <?php if(!empty($users)): ?>
+                            <?php foreach($users as $user): ?>
+                                <tr>
+                                    <td><?= "#".str_pad($user['userID'], 4, "0", STR_PAD_LEFT) ?></td>
+                                    <td><?= htmlspecialchars($user['firstName']) ?></td>
+                                    <td><?= htmlspecialchars($user['lastName']) ?></td>
+                                    <td><?= htmlspecialchars($user['email']) ?></td>
+                                    <?php if($user['status']): ?>
+                                    <td><span class="tag active">Active</span></td>
+                                    <?php endif ?>
+                                    <?php if(!$user['status']): ?>
+                                    <td><span class="tag inactive">Inactive</span></td>
+                                    <?php endif ?>
+                                </tr>
+                            <?php endforeach ?>
+                        <?php endif ?>
                     </tbody>
                 </table>
             </section>

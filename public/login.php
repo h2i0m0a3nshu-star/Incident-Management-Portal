@@ -1,7 +1,9 @@
 <?php
+// starting the session and getting the db configuraiton file
 session_start();
 require_once("db.php");
   
+// cleaning the input
 function test_input($data) {
   $data = trim($data);
   $data = stripslashes($data);
@@ -10,14 +12,16 @@ function test_input($data) {
 }
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
+  // getting all the input field values
   $email = test_input($_POST["email"]);
   $password = test_input($_POST["password"]);
+  // error handling varibles
   $flag = FALSE;
   $error = array();
-
+  // Regex to check the input fields
   $emailRegex = '/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i';
   $passwordRegex = '/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*()\-_=+{};:,<.>]).{8,}$/';
-
+  // if the input fields are not matching it will raise a flag and store the errors in the variables
   if(!preg_match($emailRegex, $email)){
     $error["email"] = "Invalid Email Address";
     $flag = TRUE;
@@ -26,7 +30,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $error["password"] = "Invalid Password";
     $flag = TRUE;
   }
-
+  // if there are no flags
   if(!$flag){
   
     try {

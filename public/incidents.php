@@ -27,7 +27,6 @@ $stmt->execute();
 $result = $stmt->get_result();
 $incidents = $result->fetch_all(MYSQLI_ASSOC);
 
-
 ?>
 
 <!DOCTYPE html>
@@ -43,8 +42,8 @@ $incidents = $result->fetch_all(MYSQLI_ASSOC);
 <body>
     <!-- Sidebar -->
     <aside id="sidebar">
-        <nav class="active">Dashboard</nav>
-        <nav><a href="incidents.php">Incidents</a></nav>
+        <nav><a href="dashboard.php">Dashboard</a></nav>
+        <nav class="active">Incidents</nav>
         <nav><a href="clients.php">Clients</a></nav>
         <!-- <?php if ($_SESSION["role"] == "admin"): ?>
             <nav><a href="users.php">Users</a></nav>
@@ -56,7 +55,7 @@ $incidents = $result->fetch_all(MYSQLI_ASSOC);
         <header id="incidents-header">
             <h1>Incidents</h1>
             <nav>
-                <a id="new-incident-button" href="new-incident.html">+ New Incident</a>
+                <a id="new-incident-button" href="newincident.php">+ New Incident</a>
             </nav>
         </header>
 
